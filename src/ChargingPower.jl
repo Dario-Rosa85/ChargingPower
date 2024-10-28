@@ -3,7 +3,7 @@ module ChargingPower
 using SparseArrays
 using Graphs
 
-export majorana_operators
+export majorana_operators, SYK_hamiltonian
 
 include(joinpath(@__DIR__, "building_operators/majorana_operators.jl"))
 
