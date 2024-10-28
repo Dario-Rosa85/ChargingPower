@@ -1,1 +1,1 @@
-This is repository to numerically compute the charging power of the SYK quantum batteries.
+This is the repository to evaluate numerically the charging power of the SYK quantum batteries.
