@@ -38,8 +38,3 @@ function majorana_operators(n_majorana)
     end
     return majorana_matrices    
 end
-
-#This function builds the quadratic SYK Hamiltonian based on a given graph
-function SYK_hamiltonian(majorana_operators, graph)
-    n_majorana = length(majorana_operators)
-end

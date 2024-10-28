@@ -1,6 +1,7 @@
 module ChargingPower
 
 using SparseArrays
+using Graphs
 
 export majorana_operators
 
