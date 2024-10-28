@@ -1,4 +1,4 @@
-# This function build Majorana operators satisfying the relation \left\{\gamma_i, \gamma_j\right\} = 2 \delta_{ij}
+# This function builds Majorana operators satisfying the relation \left\{\gamma_i, \gamma_j\right\} = 2 \delta_{ij}
 function majorana_operators(n_majorana)
     pauli_x = sparse([0 1; 1 0])
     pauli_y = sparse([0 -1 * im; 1 * im 0])
@@ -37,4 +37,9 @@ function majorana_operators(n_majorana)
         end
     end
     return majorana_matrices    
+end
+
+#This function builds the quadratic SYK Hamiltonian based on a given graph
+function SYK_hamiltonian(majorana_operators, graph)
+    n_majorana = length(majorana_operators)
 end
