@@ -14,16 +14,23 @@ function majorana_operators(n_majorana)
             push!(majorana_matrices, pauli_z)
         end
     end
-    @inbounds Threads.@threads :static for i in 1:n_majorana 
+    @inbounds Threads.@threads :static for i in 1:2:n_majorana-1 
         for j in 2:floor(Int, n_majorana/2)
-            if j < i
+            if 2*j - 1 < i
                 majorana_matrices[i] = kron(majorana_matrices[i], pauli_z)
-            elseif j == i
-                if iseven(i)
-                    majorana_matrices[i] = kron(majorana_matrices[i], pauli_y)
-                else
-                    majorana_matrices[i] = kron(majorana_matrices[i], pauli_x)
-                end
+            elseif 2*j - 1 == i
+                majorana_matrices[i] = kron(majorana_matrices[i], pauli_x)
+            else
+                majorana_matrices[i] = kron(majorana_matrices[i], identity)
+            end             
+        end
+    end
+    @inbounds Threads.@threads :static for i in 2:2:n_majorana 
+        for j in 2:floor(Int, n_majorana/2)
+            if 2*j < i
+                majorana_matrices[i] = kron(majorana_matrices[i], pauli_z)
+            elseif 2*j == i
+                majorana_matrices[i] = kron(majorana_matrices[i], pauli_y)
             else
                 majorana_matrices[i] = kron(majorana_matrices[i], identity)
             end             
