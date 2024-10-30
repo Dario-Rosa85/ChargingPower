@@ -16,7 +16,7 @@ function X_model_hamiltonian(majorana_operators)
         if k == 1
             hamiltonian_matrix .+= (1/sqrt(2)) .* majorana_operators[1]
         else
-            provisional_matrix = sqrt(2) .* majorana_operators[1]
+            provisional_matrix = 1/sqrt(2) .* majorana_operators[1]
             for j in 2:(2 * k - 1) 
                 provisional_matrix *= ((1/sqrt(2)) .* majorana_operators[j])
             end
