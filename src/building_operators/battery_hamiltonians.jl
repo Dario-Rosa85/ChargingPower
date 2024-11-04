@@ -25,3 +25,21 @@ function X_model_hamiltonian(majorana_operators)
     end
     return hamiltonian_matrix
 end
+
+# This function creates the Hamiltonian for the fake X-model
+function fake_X_model_hamiltonian(majorana_operators)
+    n_majorana = length(majorana_operators)
+    hamiltonian_matrix = spzeros(ComplexF64, 2^floor(Int, n_majorana/2), 2^floor(Int, n_majorana/2))
+    for k in 1: floor(Int, n_majorana/2) 
+        if k == 1
+            hamiltonian_matrix .+=  majorana_operators[1]
+        else
+            provisional_matrix =  majorana_operators[1]
+            for j in 2:(2 * k - 1) 
+                provisional_matrix *=  majorana_operators[2*j - 1]
+            end
+            hamiltonian_matrix .+=  (-im)^(k + 1) .* provisional_matrix
+        end
+    end
+    return hamiltonian_matrix
+end
